@@ -1,5 +1,8 @@
 package com.kang.housrutils.policy;
 
+/**
+ * @author kang
+ */
 public interface BrokeragePolicy {
 
     BrokerageRule createBrokerageRule(Long price);

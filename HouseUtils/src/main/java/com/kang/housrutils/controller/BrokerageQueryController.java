@@ -6,7 +6,10 @@ import com.kang.housrutils.policy.BrokeragePolicyFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ * @author kang
+ *
+ * 중계수수료가 얼마인지 조회하는 컨트롤러러 */
 @RestController
 public class BrokerageQueryController {
 

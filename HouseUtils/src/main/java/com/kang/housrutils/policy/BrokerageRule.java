@@ -1,6 +1,7 @@
 package com.kang.housrutils.policy;
 
 import lombok.AllArgsConstructor;
+import org.springframework.lang.Nullable;
 
 /**
  * 가격이 특정 범위일때 상한효율과 상한금액을 가지는 클래스
@@ -8,6 +9,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class BrokerageRule {
     private Double brokeragePercent;
+
+    @Nullable
     private Long limitAmount;
 
     public Long calcMaxBrokerage(Long price) {

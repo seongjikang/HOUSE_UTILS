@@ -1,15 +1,22 @@
 package com.kang.housrutils.policy;
 
+import com.kang.housrutils.exception.ErrorCode;
+import com.kang.housrutils.exception.HouseUtilsException;
+
+import java.util.List;
+
 /**
  * @author kang
  */
 public interface BrokeragePolicy {
 
-    BrokerageRule createBrokerageRule(Long price);
+    List<BrokerageRule> getRules();
 
     default Long calculate(Long price) {
-        // TODO: 가격을 받아와서 중계수수료 계산
-        BrokerageRule rule = createBrokerageRule(price);
-        return rule.calcMaxBrokerage(price);
+        BrokerageRule brokerageRule = getRules().stream()
+                .filter(rule -> price < rule.getLessThen())
+                .findFirst().orElseThrow(() -> new HouseUtilsException(ErrorCode.INTERNAL_ERROR));
+
+        return brokerageRule.calcMaxBrokerage(price);
     }
 }
